@@ -1,13 +1,21 @@
 package main
 
 import (
-  "fmt"
-//   "o2o-center-api/routers"
-//   "o2o-center-api/conf"
- )
+	"fmt"
+	"net/http"
+)
 
 func main() {
-  fmt.Println("hello")
-  // router := routers.InitRouter()
-  // router.Run(":" + conf.SERVER_PORT)
+	http.HandleFunc("/", hello)
+	server := &http.Server{
+		Addr: ":8888",
+	}
+  fmt.Println("server startup...")
+	if err := server.ListenAndServe(); err != nil {
+		fmt.Printf("server startup failed, err:%v\n", err)
+	}
+}
+
+func hello(w http.ResponseWriter, _ *http.Request) {
+	w.Write([]byte("hello liwenzhou.com!"))
 }
