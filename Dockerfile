@@ -33,5 +33,5 @@ COPY ./conf /conf
 # from builder image, cpoy /dist/app into current folder
 COPY --from=builder /build/o2o-center-api /
 
-# 需要运行的命令
-ENTRYPOINT ["/o2o-center-api", "conf/config.ini"]
+# the command that need to be run
+#ENTRYPOINT ["/o2o-center-api", "conf/config.ini"]
